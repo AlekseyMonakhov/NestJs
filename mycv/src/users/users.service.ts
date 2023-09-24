@@ -13,10 +13,13 @@ export class UsersService {
             password,
         });
 
-        this.repo.save(user);
+        return this.repo.save(user);
     }
 
     findOne(id: number) {
+        if (!id) {
+            return null;
+        }
         return this.repo.findOneBy({ id });
     }
 
